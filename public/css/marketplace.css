@@ -1,0 +1,245 @@
+:root {
+    --primary: #2e7d32;
+    --white: #ffffff;
+    --border: #e0e0e0;
+    --text: #333333;
+    --text-light: #666666;
+    --radius: 8px;
+    --radius-lg: 12px;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1b5e20;
+    /* Mengamankan warna dasar jika gambar lambat dimuat */
+}
+
+/* Kontainer utama yang membungkus dari atas sampai bawah */
+.marketplace-page {
+    position: relative;
+    min-height: 100vh;
+    padding-top: 90px;
+    padding-bottom: 5rem;
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* Gambar latar belakang dan overlay hijau transparan */
+.marketplace-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.marketplace-overlay::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(27, 94, 32, 0.75);
+    /* Efek transparan hijau */
+}
+
+.marketplace-bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    position: fixed;
+    /* Membuat background tetap stabil saat di-scroll */
+    top: 0;
+    left: 0;
+    z-index: -2;
+}
+
+/* Header Halaman */
+.page-header {
+    color: var(--white);
+    padding: 1.5rem 0 1rem 0;
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.page-header h1 {
+    color: var(--white);
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.page-header p {
+    font-size: 1rem;
+    opacity: 0.9;
+    color: var(--white);
+    margin: 0;
+}
+
+/* Kontrol Pencarian & Filter */
+.controls-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+}
+
+.search-box {
+    flex: 1;
+    min-width: 300px;
+    position: relative;
+}
+
+.search-box i {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-light);
+}
+
+.search-box input {
+    width: 100%;
+    border: 1px solid var(--border);
+    padding: 0.7rem 1rem 0.7rem 2.8rem;
+    border-radius: var(--radius);
+    background-color: var(--white);
+    box-shadow: var(--shadow);
+}
+
+.category-filters {
+    display: flex;
+    gap: 0.75rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+}
+
+.category-filters a {
+    padding: 0.6rem 1.25rem;
+    border-radius: 20px;
+    background-color: var(--white);
+    border: 1px solid var(--border);
+    font-size: 0.9rem;
+    font-weight: 500;
+    white-space: nowrap;
+    text-decoration: none;
+    color: var(--text);
+    transition: all 0.2s;
+}
+
+.category-filters .active,
+.category-filters a:hover {
+    background-color: var(--primary);
+    color: var(--white);
+    border-color: var(--primary);
+}
+
+/* Grid Kartu Produk */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 2rem;
+}
+
+.product-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    position: relative;
+    transition: transform 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.card-img-wrapper {
+    position: relative;
+    height: 180px;
+    overflow: hidden;
+}
+
+.card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 1.25rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+    font-weight: 600;
+}
+
+.card-price {
+    font-size: 1.25rem;
+    color: var(--primary);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.price-unit {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    font-weight: 400;
+}
+
+.status-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    z-index: 10;
+}
+
+.status-badge.available {
+    background-color: #2e7d32;
+    color: white;
+}
+
+.status-badge.unavailable {
+    background-color: #d32f2f;
+    color: white;
+}
+
+.farmer-info {
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    color: var(--text-light);
+}
+
+.no-products {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 4rem 0;
+    color: white;
+}
